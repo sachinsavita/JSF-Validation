@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+<h:head>
+  <title>Student - Input Form</title>
+  <style>
+          .error {color:red}
+  </style>
+</h:head>
+
+<h:body>
+     <h:form>  
+                         
+                                 <!-- student.setFirstName -->
+       First Name*: <h:inputText id="firstName" 
+                                value="#{student.firstName}"
+                                a:placeholder="Enter. . ." 
+                                label="First name"
+                                required="true"
+                                requiredMessage="Your first name is mendatory" />    
+                                
+       <h:message for="firstName" styleClass="error"/> 
+                                <br/><br/>
+                     
+                     
+       Last Name*: <h:inputText id="lastName" 
+                               value="#{student.lastName}"
+                               a:placeholder="Enter. . ." 
+                               label="Last name"
+                               required="true" 
+                               requiredMessage="Your last name is mendatory" />    
+                                
+       <h:message for="lastName" styleClass="error"/>  <br/><br/>  
+                      
+       Email*: <h:inputText id="email" 
+                               value="#{student.email}"
+                               a:placeholder="Enter. . ." 
+                               label="Email"        
+                               required="true"
+                               requiredMessage="Your email address is mendatory" />    
+                                
+       <h:message for="email" styleClass="error"/>   <br/><br/>                    
+                                         
+       Country: <h:selectOneMenu value="#{student.country}">
+       
+                       <f:selectItems value="#{student.countryOptions}"/>
+       
+                </h:selectOneMenu><br/><br/>
+                
+       Postal Code: <h:inputText id="postalCode" 
+                               value="#{student.postalCode}"
+                               a:placeholder="Enter. . ." 
+                               label="Postal Code"
+                               required="true"
+                               requiredMessage="Must be of 5 digits."
+                               validatorMessage="Must be of 5 digits"> 
+                               <f:validateLength minimum="5" maximum="5"/>
+                    </h:inputText>              
+                                
+       <h:message for="postalCode" styleClass="error"/>   <br/><br/> 
+       
+       Free Passes: <h:inputText id="freePasses" 
+                               value="#{student.freePasses}"
+                               a:placeholder="Enter. . ." 
+                               label="Free Passes"
+                               required="true"
+                               requiredMessage="Must be between 0 to 10. "
+                               validatorMessage="Must be between 0 to 10."> 
+                               <f:validateLongRange minimum="0" maximum="10"/>
+                   </h:inputText>               
+                                
+       <h:message for="freePasses" styleClass="error"/>   <br/><br/> 
+       
+       
+<!--        <h:inputText id="isim" value="#{degiskenBean.eposta}" required="true" validatorMessage="Geçersiz E-posta"  requiredMessage="E-Posta Alanı Zorunludur" >
+   <f:validateRegex pattern="^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$"/>
+</h:inputText>
+<h:message for="eposta" /><br/>
+
+
+ -->
+       <!--         OR     
+       
+       <h:selectOneMenu value="#{student.country}">
+       
+                        <f:selectItem itemValue="Brazil" itemLabel="Brazil"/>
+                        <f:selectItem itemValue="France" itemLabel="France"/>
+                        <f:selectItem itemValue="India" itemLabel="India"/>
+                        <f:selectItem itemValue="Japan" itemLabel="Japan"/>
+                        <f:selectItem itemValue="Africa" itemLabel="Africa"/>
+                        <f:selectItem itemValue="Russia" itemLabel="Russia"/>
+       
+                </h:selectOneMenu>  -->  
+                
+                
+        Favorite Language: <h:selectOneRadio value="#{student.favouriteLanguage}">
+        
+        <f:selectItem itemValue="Java" itemLabel="Java"/>
+        <f:selectItem itemValue="Python" itemLabel="Python"/>
+        <f:selectItem itemValue="Ruby" itemLabel="Ruby"/>
+        <f:selectItem itemValue="C++" itemLabel="C++"/>
+        <f:selectItem itemValue="C#" itemLabel="C#"/>
+       
+        </h:selectOneRadio>
+       
+       <br/>
+       
+       Select your skills:
+       <h:selectManyCheckbox value="#{student.skills}">
+       
+       <f:selectItem itemValue="Spring" itemLabel="Spring"/>
+       <f:selectItem itemValue="Django" itemLabel="Django"/>
+       <f:selectItem itemValue="Nodejs" itemLabel="Nodejs"/>
+       <f:selectItem itemValue="JSF" itemLabel="JSF"/>
+       
+       </h:selectManyCheckbox>
+       
+       <br/>               
+                             
+        <h:commandButton value="Submit" action="student_response"/>
+        
+         <!-- <h:messages styleClass="error"/> -->
+        
+        
+     </h:form>
+
+</h:body>
+
+</html>
